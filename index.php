@@ -1,3 +1,13 @@
+<?php
+require 'config/database.php';
+$db = new Database();
+$con = $db->conectar();
+
+$sql = $con->prepare("SELECT id, nombre, precio FROM productos WHERE activo =1");
+$sql->execute();
+$resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,23 +46,31 @@
 <main>
     <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-            <div class="card shadow-sm">
-                <img src="images/productos/1/prod1.jpg">
-                <div class="card-body">
-                    <h5 class="card-title">Anillos de plata</h5>
-                    <p class="card-text">$15.00</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <a href="" class="btn btn-primary">Detalles</a>
+        <?php foreach($resultado as $row){?>
+            <div class="col">
+                <div class="card shadow-sm">
+                    <?php
+                    $id = $row['id'];
+                    $images = "images/productos/".$id."/prod1.jpg";
+                    if(!file_exists($images)){
+                        $images = "images/noImages.jpg";
+                    }
+                    ?>
+                    <img src="<?php echo $images; ?>">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $row['nombre'];?></h5>
+                        <p class="card-text">$ <?php echo number_format($row['precio'],2,'.',',');?></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="" class="btn btn-primary">Detalles</a>
+                            </div>
+                            <a href="" class="btn btn-success">Agregar</a>
                         </div>
-                        <a href="" class="btn btn-success">Agregar</a>
-                    </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        <?php } ?>
     </div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
