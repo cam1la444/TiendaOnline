@@ -44,6 +44,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </header>
 <main>
+    <!--codigo para autogenerar la imagen, informacion y detalles de los productos por el FOREACH sin repertir codigo-->
     <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <?php foreach($resultado as $row){?>
@@ -69,8 +70,8 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
             </div>
+            <?php } ?>
         </div>
-        <?php } ?>
     </div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
