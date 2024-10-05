@@ -85,7 +85,7 @@ if($id=='' || $token == ''){
                     <a href="#" class="nav-link">Contacto</a>
                 </li>
             </ul>
-            <a href="carrito.php" class="btn btn-primary">Carrito <span id="num_cart" class="badge bg-secondary">
+            <a href="checkout.php" class="btn btn-primary">Carrito <span id="num_cart" class="badge bg-secondary">
                 <?php echo $num_cart; ?>
             </span></a>
             </div>
@@ -162,7 +162,7 @@ if($id=='' || $token == ''){
             mode: 'cors'
         }).then(response => response.json()).then(data=> {
             if(data.ok){
-                muestra la cantidad de elementos en el carrito
+                //muestra la cantidad de elementos en el carrito
                 let elemento = document.getElementById("num_cart")
                 elemento.innerHTML = data.numero
 
