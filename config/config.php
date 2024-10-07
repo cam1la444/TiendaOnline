@@ -1,4 +1,6 @@
 <?php
+define("CLIENTE_ID", "AXUJPlFDYKUgda8epgQAKYRHD0UT4EqLl0zXQidVEugPHlYdfVM7Da4jW7xefX-OH-irw5ulCp2fLlBT");
+define("CURRENCY", "USD");
 define("KEY_TOKEN", "ABC.cnco-2015*");
 define("MONEDA", "$");
 
