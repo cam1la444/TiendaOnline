@@ -149,7 +149,9 @@ if($productos != null){
                         body: JSON.stringify({
                             detalles:detalles
                         })
-                    })
+                    })/*.then(function(response) {
+                        window.location.href="completado.html";
+                    })*/
                 });
             },
             onCancel:function(data){
