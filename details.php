@@ -137,9 +137,13 @@ if($id=='' || $token == ''){
                     <?php echo $descripcion;?>
                 </p>
 
+                <div class="col-3 my-3">
+                    Cantidad: <input class="form-control" id="cantidad" name="cantidad" type="number" min="1" max="50" value="1">
+                </div>
+
                 <div class="d-grid gap-3 col-10 mx-auto">
                     <button class="btn btn-primary" type="button">Comprar ahora</button>
-                    <button class="btn btn-outline-primary" type="button" onclick="addProducto(<?php echo $id; ?>, '<?php echo $token_tmp; ?>')">Agregar al carrito</button>
+                    <button class="btn btn-outline-primary" type="button" onclick="addProducto(<?php echo $id; ?>, cantidad.value,'<?php echo $token_tmp; ?>')">Agregar al carrito</button>
                 </div>
             </div>
         </div>
@@ -150,10 +154,11 @@ if($id=='' || $token == ''){
 <!--<div id="mensajeExito" style="display: none; background-color: #008000; color: white; padding: 10px; position: fixed; top: 10px; right: 10px; border-radius: 5px;">Se agregó el producto al carrito</div> -->
 <div id="mensajeExito" style="display: none; background-color: #229954; color: white; padding: 10px; position: fixed; bottom: 10px; left: 10px; border-radius: 5px;">Ítem agregado al carrito <span onclick="ocultarMensaje()" style="cursor: pointer; margin-left: 10px;">&times;</span></div>
 <script>
-    function addProducto(id, token){
+    function addProducto(id, cantidad, token){
         let url = 'clases/carrito.php'
         let formData = new FormData()
         formData.append('id', id)
+        formData.append('cantidad', cantidad)
         formData.append('token', token)
 //se esta utilizando ajax
         fetch(url, {

@@ -113,7 +113,7 @@ if($productos != null){
         </div>
     </div>
 </div>
-<!-- Añade un div para la ventana de espera -->
+<!-- div para la ventana de espera -->
 <div id="loadingMessage" style="display: none;">
     <div style="text-align: center; margin-top: 20px;">
         <h4>Espere, su resumen de compra está cargando...</h4>
