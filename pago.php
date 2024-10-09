@@ -113,6 +113,16 @@ if($productos != null){
         </div>
     </div>
 </div>
+<!-- Añade un div para la ventana de espera -->
+<div id="loadingMessage" style="display: none;">
+    <div style="text-align: center; margin-top: 20px;">
+        <h4>Espere, su resumen de compra está cargando...</h4>
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
+
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -137,6 +147,8 @@ if($productos != null){
                 });
             },
             onApprove:function(data, actions){
+                document.getElementById('loadingMessage').style.display = 'block';
+
                 let URL = 'clases/captura.php'
                 actions.order.capture().then(function(detalles){
                     
