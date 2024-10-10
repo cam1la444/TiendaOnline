@@ -16,15 +16,15 @@ try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_CONNECTION;                    //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->Host       = MAIL_HOST;                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'jennycho531@gmail.com';                     //SMTP username
-    $mail->Password   = 'ubzeqzikjmlrrkdz';                               //SMTP password
+    $mail->Username   = MAIL_USER;                     //SMTP username
+    $mail->Password   = MAIL_PASS;                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption
-    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mail->Port       = MAIL_PORT;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('jennycho531@gmail.com', 'Tienda Mevas');
+    $mail->setFrom(MAIL_USER, 'Tienda Mevas');
     $mail->addAddress('lupitajulietaseniors@gmail.com', 'Comprador');
 
     $mail->isHTML(true);                                        // Enviar como HTML
@@ -34,7 +34,7 @@ try {
     $cuerpo .= '<p>El ID de su compra es <b>'. $id_transaccion .'</b></p>';
 
 
-    $mail->Body = utf8_decode($cuerpo);
+    $mail->Body = mb_convert_encoding($cuerpo, 'UTF-8', 'ISO-8859-1');
     $mail->AltBody = 'Le enviamos los detalles de su compra';
 
     $mail->setLanguage('es', '../phpmailer/language/phpmailer.lang-es.php');
