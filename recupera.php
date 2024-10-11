@@ -64,30 +64,8 @@ if(!empty($_POST)){
     <link href="css/estilo.css" rel="stylesheet">
 </head>
 <body>
-<header>
-    <div class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a href="#" class="navbar-brand">
-                <strong>Tienda en Linea</strong>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<?php include 'menu.php'; ?>
 
-            <div class="collapse navbar-collapse" id="navbarHeader">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a href="#" class="nav-link active">Catalogo</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Contacto</a>
-                </li>
-            </ul>
-            </div>
-        </div>
-    </div>
-</header>
 <main class="form-login m-auto pt-4">
     <h3>Recuperar contraseña</h3>
     <?php mostrarMensajes($errors); ?>
@@ -108,5 +86,6 @@ if(!empty($_POST)){
         </div>
     </form>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html> 
