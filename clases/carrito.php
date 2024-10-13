@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../config/config.php';
 
 if(isset($_POST['id'])){
@@ -8,6 +9,10 @@ if(isset($_POST['id'])){
 
     $token_tmp = hash_hmac('sha1', $id, KEY_TOKEN);
     if ($token == $token_tmp && $cantidad >0 && is_numeric($cantidad)){
+        if (!isset($_SESSION['carrito'])) {
+            $_SESSION['carrito'] = array('productos' => array());
+        }
+        
         if($token == $token_tmp){
             if(isset($_SESSION['carrito']['productos'][$id])){
                 $_SESSION['carrito']['productos'][$id] += $cantidad;
@@ -23,9 +28,6 @@ if(isset($_POST['id'])){
         $datos['ok'] = false;
     }
     echo json_encode($datos);
-
-
-
 } else{
     $datos['ok'] = false;
 }

@@ -17,8 +17,6 @@ if(is_array($datos)){
     $sql->execute([$id_cliente]);
     $row_cliente = $sql->fetch(PDO::FETCH_ASSOC);
 
-
-    
     $id_transaccion = $datos['detalles']['id'];
     $total = $datos['detalles']['purchase_units'][0]['amount']['value'];
     $status = $datos['detalles']['status'];
