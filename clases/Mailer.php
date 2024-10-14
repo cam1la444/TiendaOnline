@@ -32,7 +32,8 @@ class Mailer{
             $mail->Subject = $asunto;
 
             $mail->Body = mb_convert_encoding($cuerpo, 'UTF-8', 'ISO-8859-1');
-            $mail->setLanguage('es', '../phpmailer/language/phpmailer.lang-es.php');
+            $mail->setLanguage('es', __DIR__. '/../phpmailer/src/language/phpmailer.lang-es.php');
+            //$mail->setLanguage('es', '../phpmailer/language/phpmailer.lang-es.php');
         
             $mail->SMTPOptions = array(
                 'ssl' => array(

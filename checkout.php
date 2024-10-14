@@ -178,13 +178,13 @@ if($productos != null){
                 let list =document.getElementsByName('subtotal[]')
 
                 for(let i =0; i<list.length; i++){
-                    total += parseFloat(list[i].innerHTML.replace(/[$,]/g, ''))
+                    total += parseFloat(list[i].innerHTML.replace(/[<?php echo MONEDA ?>,]/g, ''))
                 }
 
                 total = new Intl.NumberFormat('en-US',{
                     minimumFractionDigits:2
                 }).format(total)
-                document.getElementById('total').innerHTML = '<?php echo MONEDA; ?>' + total
+                document.getElementById('total').innerHTML = '<?php echo MONEDA ?>' + total
 
                 cantidadAnterior[id] = cantidad;
             })
