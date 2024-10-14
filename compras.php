@@ -6,6 +6,8 @@ require 'clases/clientesFunciones.php';
 $db = new Database();
 $con = $db->conectar();
 
+$token = generarToken();
+$_SESSION['token'] = $token;
 $idCliente = $_SESSION['user_cliente'];
 
 $sql = $con->prepare("SELECT id_transaccion, fecha, status, total, metodo_pago FROM compra WHERE id_cliente = ? ORDER BY DATE(fecha) DESC");
@@ -39,7 +41,7 @@ $sql->execute([$idCliente]);
             <div class="card-body">
                 <h5 class="card-title">Folio: <?php echo $row['id_transaccion']; ?></h5>
                 <p class="card-text">Total: <?php echo $row['total']; ?></p>
-                <a href="compra_detalle.php" class="btn btn-primary">Ver compra</a>
+                <a href="compra_detalle.php?orden=<?php echo $row['id_transaccion']; ?>&token=<?php echo $token; ?>" class="btn btn-primary">Ver compra</a>
             </div>
         </div>
         <?php } ?>
