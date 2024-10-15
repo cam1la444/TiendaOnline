@@ -1,0 +1,355 @@
+/* Código inicial de estilo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #F2F2F2; /* Color de fondo suave */
+}
+
+header {
+    background-color: #07598C; /* Azul oscuro */
+    padding: 10px;
+    text-align: center;
+    color: #fff; /* Color del texto blanco */
+}
+
+.logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* Menú de navegación */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #F2F2F2; /* Color claro para enlaces */
+    padding: 5px 10px;
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+nav ul li a:hover {
+    background-color: #F2CC0F; /* Color amarillo al pasar el mouse */
+    border-radius: 5px; /* Esquinas redondeadas */
+}
+
+.hero {
+    background-color: #218DA6; /* Azul medio */
+    padding: 50px;
+    text-align: center;
+    font-size: 24px;
+    color: #fff; /* Color del texto blanco */
+}
+
+/* Secciones de imágenes */
+.images, .extra-info {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.image, .box {
+    background-color: #F2F2F2; /* Color de fondo suave para cajas */
+    padding: 20px;
+    text-align: center;
+    width: 30%;
+    border: 1px solid #ddd; /* Borde suave */
+    border-radius: 8px; /* Esquinas redondeadas */
+}
+
+footer {
+    background-color: #033E8C; /* Azul más oscuro */
+    text-align: center;
+    padding: 20px;
+    color: #fff; /* Color del texto blanco */
+    margin-top: auto;
+}
+
+/* Visión principal */
+.vision-main {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.vision-main .image, .vision-main .content {
+    background-color: #F2F2F2; /* Color de fondo suave para cajas */
+    padding: 30px;
+    width: 45%;
+    border: 1px solid #ddd; /* Borde suave */
+    border-radius: 8px; /* Esquinas redondeadas */
+}
+
+.vision-grid {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.vision-grid .box {
+    background-color: #F2F2F2; /* Color de fondo suave para cajas */
+    padding: 20px;
+    width: 20%;
+    text-align: center;
+    border: 1px solid #ddd; /* Borde suave */
+    border-radius: 8px; /* Esquinas redondeadas */
+}
+
+/* Sección de historia */
+.history-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.left-box, .right-box, .bottom-box {
+    background-color: #F2F2F2; /* Color de fondo suave para cajas */
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd; /* Borde suave */
+    border-radius: 8px; /* Esquinas redondeadas */
+}
+
+.left-box {
+    grid-column: 1 / 2;
+}
+
+.right-box {
+    grid-column: 2 / 3;
+}
+
+.bottom-box {
+    grid-column: 1 / 3;
+}
+
+.ofrenda-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.ofrenda-content .title, .ofrenda-content .image {
+    background-color: #F2F2F2; /* Color de fondo suave para cajas */
+    padding: 20px;
+    margin: 10px 0;
+    width: 60%;
+    text-align: center;
+    border: 1px solid #ddd; /* Borde suave */
+    border-radius: 8px; /* Esquinas redondeadas */
+}
+
+.cart-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    text-align: center;
+}
+
+.cart-content .cart-item {
+    background-color: #F2F2F2; /* Color de fondo suave para cajas */
+    padding: 20px;
+    width: 60%;
+    border: 1px solid #ddd; /* Borde suave */
+    border-radius: 8px; /* Esquinas redondeadas */
+}
+
+.button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #F2CC0F; /* Color amarillo */
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+.button:hover {
+    background-color: #218DA6; /* Cambiar a azul medio al pasar el mouse */
+}
+
+/* Footer */
+footer {
+    background-color: #033E8C; /* Azul oscuro */
+    color: #fff; /* Color del texto blanco */
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.footer-section {
+    margin: 10px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.footer-section h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.footer-section p, .footer-section a {
+    font-size: 14px;
+    color: #ddd;
+}
+
+.footer-section a {
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+}
+
+.social-links li {
+    display: inline;
+    margin-right: 10px;
+}
+
+footer p {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+footer .footer-section iframe {
+    margin-top: 10px;
+    border: 0;
+    border-radius: 8px;
+}
+
+footer .footer-section a {
+    color: #4CAF50; /* Cambia el color del enlace para hacerlo visible */
+    text-decoration: none;
+    font-size: 14px;
+}
+
+footer .footer-section a:hover {
+    text-decoration: underline;
+}
+
+/* Paypal button */
+.paypal-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    .images, .extra-info, .vision-main, .vision-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image, .box, .vision-main .image, .vision-main .content, .vision-grid .box {
+        width: 90%;
+    }
+
+    .history-content {
+        grid-template-columns: 1fr;
+    }
+
+    .bottom-box {
+        grid-column: 1;
+    }
+
+    .ofrenda-content .title, .ofrenda-content .image, .cart-content .cart-item {
+        width: 90%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Estilos para el menú */
+.menu-container {
+    position: relative;
+}
+
+/* Ícono del menú hamburguesa */
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #033E8C; /* Usa uno de tus colores preferidos */
+}
+
+/* Menú de navegación */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    /* Oculta el menú normal y muestra el ícono */
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background-color: #07598C;
+        width: 200px;
+        border-radius: 5px;
+        padding: 10px;
+        text-align: right;
+    }
+
+    /* Estilos del ícono de hamburguesa */
+    .menu-icon {
+        display: block;
+    }
+
+    /* Estilos para los enlaces del menú desplegable */
+    nav ul li a {
+        display: block;
+        color: #F2F2F2; /* Color claro para resaltar */
+        padding: 10px 0;
+    }
+
+    nav ul li a:hover {
+        color: #F2CC0F;
+    }
+}
