@@ -62,6 +62,24 @@ function emailExiste($email, $con){
     return false;
 }
 
+function telExiste($telefono, $con){
+    $sql = $con->prepare("SELECT id FROM clientes WHERE telefono LIKE ? LIMIT 1");
+    $sql->execute([$telefono]);
+    if($sql->fetchColumn()>0){
+        return true;
+    }
+    return false;
+}
+
+function duiExiste($dui, $con){
+    $sql = $con->prepare("SELECT id FROM clientes WHERE dui LIKE ? LIMIT 1");
+    $sql->execute([$dui]);
+    if($sql->fetchColumn()>0){
+        return true;
+    }
+    return false;
+}
+
 function mostrarMensajes(array $errors){
     if(count($errors)>0){
         echo '<div class="alert alert-warning alert-dismissible fade show" role="alert"><ul></ul>';

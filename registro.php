@@ -37,6 +37,14 @@ if(!empty($_POST)){
         $errors[] = "El correo electronico $email ya existe";
     }
 
+    if(telExiste($telefono, $con)){
+        $errors[] = "El número de teléfono $telefono ya existe";
+    }
+
+    if(duiExiste($dui, $con)){
+        $errors[] = "El número de DUI $dui ya existe";
+    }
+
     if(count($errors) == 0){
         $id= registraCliente([$nombres, $apellidos, $email, $telefono, $dui], $con);
         
@@ -75,6 +83,8 @@ if(!empty($_POST)){
     <title>Tienda En Linea</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="css/estilo.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" type="x-icon" href="Logo2.png">
 </head>
 <body>
 <?php include 'menu.php'; ?>
@@ -88,39 +98,43 @@ if(!empty($_POST)){
         <form class="row g-3" actions="registro.php" method="post" autocomplete="off">
             <div class="col-md-6">
                 <label for="nombres"><span class="text-danger">*</span> Nombres</label>
-                <input type="text" name="nombres" id="nombres" class="form-control" requireda>
+                <input type="text" name="nombres" id="nombres" class="form-control" value="<?php echo isset($_POST['nombres']) ? htmlspecialchars($_POST['nombres']) : ''; ?>">
             </div>
 
             <div class="col-md-6">
                 <label for="apellidos"><span class="text-danger">*</span> Apellidos</label>
-                <input type="text" name="apellidos" id="apellidos" class="form-control" requireda>
+                <input type="text" name="apellidos" id="apellidos" class="form-control" value="<?php echo isset($_POST['apellidos']) ? htmlspecialchars($_POST['apellidos']) : ''; ?>">
             </div>
 
             <div class="col-md-6">
                 <label for="email"><span class="text-danger">*</span> Correo Electronico</label>
-                <input type="email" name="email" id="email" class="form-control" requireda>
+                <input type="email" name="email" id="email" class="form-control" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
                 <span id="validaEmail" class="text-danger"></span>
+                <span id="validarEmail" class="text-danger"></span>
             </div>
 
             <div class="col-md-6">
-                <label for="telefono"><span class="text-danger">*</span> Telefono</label>
-                <input type="tel" name="telefono" id="telefono" class="form-control" requireda>
+                <label for="telefono"><span class="text-danger">*</span> Teléfono</label>
+                <input type="tel" name="telefono" id="telefono" class="form-control" value="<?php echo isset($_POST['telefono']) ? htmlspecialchars($_POST['telefono']) : ''; ?>" placeholder="00000000">
+                <span id="validaTel" class="text-danger"></span>
             </div>
 
             <div class="col-md-6">
                 <label for="dui"><span class="text-danger">*</span> DUI</label>
-                <input type="text" name="dui" id="dui" class="form-control" requireda>
+                <input type="text" name="dui" id="dui" class="form-control" value="<?php echo isset($_POST['dui']) ? htmlspecialchars($_POST['dui']) : ''; ?>" placeholder="000000000">
+                <span id="validaDUI" class="text-danger"></span>
             </div>
 
             <div class="col-md-6">
                 <label for="usuario"><span class="text-danger">*</span> Usuario</label>
-                <input type="text" name="usuario" id="usuario" class="form-control" requireda>
+                <input type="text" name="usuario" id="usuario" class="form-control" value="<?php echo isset($_POST['usuario']) ? htmlspecialchars($_POST['usuario']) : ''; ?>">
                 <span id="validaUsuario" class="text-danger"></span>
             </div>
 
             <div class="col-md-6">
                 <label for="password"><span class="text-danger">*</span> Contraseña</label>
                 <input type="password" name="password" id="password" class="form-control" requireda>
+                <span id="validaPassword" class="text-danger"></span>
             </div>
 
             <div class="col-md-6">
@@ -150,6 +164,112 @@ if(!empty($_POST)){
     txtEmail.addEventListener("blur", function(){
         existeEmail(txtEmail.value)
     },false)
+
+    let EmailText = document.getElementById('email')
+    EmailText.addEventListener("blur", function(){
+        verificarEmail(txtEmail.value)
+    }, false)
+
+    let txtTel = document.getElementById('telefono')
+    txtTel.addEventListener("blur", function(){
+        verificarTel(txtTel.value)
+    }, false)
+
+    let txtDui = document.getElementById('dui');
+    txtDui.addEventListener("blur", function () {
+        verificarDui(txtDui.value);
+    }, false);
+
+    let txtPassword =document.getElementById('password');
+    txtPassword.addEventListener("blur", function(){
+        verificarPassword(txtPassword.value)
+    }, false)
+
+    function verificarPassword(password) {
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+        // Verifica que la contraseña cumpla con todas las condiciones
+        if (!regex.test(password)) {
+            document.getElementById('validaPassword').innerHTML = 'La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula, una minúscula, un número y un carácter especial.';
+        } else {
+            document.getElementById('validaPassword').innerHTML = ''; // Borra cualquier mensaje previo si es válida
+        }
+    }
+
+    function verificarEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        // Verifica el formato del correo electrónico
+        if (!regex.test(email)) {
+            document.getElementById('validarEmail').innerHTML = 'El formato del correo electrónico no es válido';
+        } else {
+            document.getElementById('validarEmail').innerHTML = ''; // Borra cualquier mensaje previo si es válido
+        }
+    }
+
+    function verificarDui(dui) {
+        const regex = /^[0-9]{9}$/;
+
+        // Verifica el formato del DUI
+        if (!regex.test(dui)) {
+            document.getElementById('validaDUI').innerHTML = 'El formato del número de DUI debe ser 000000000';
+            return; // Sale de la función si el formato no es válido
+        } else {
+            document.getElementById('validaDUI').innerHTML = ''; // Borra cualquier mensaje previo
+        }
+
+        // Realiza la solicitud AJAX si el formato es válido
+        let url = "clases/clienteAjax.php";
+        let formData = new FormData();
+        formData.append("dui", dui);
+
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    document.getElementById('dui').value = ''; // Limpia el campo si ya está registrado
+                    document.getElementById('validaDUI').innerHTML = 'El número de DUI ya está registrado.';
+                } else {
+                    document.getElementById('validaDUI').innerHTML = ''; // Limpia el mensaje si no está registrado
+                }
+            })
+            .catch(error => {
+                console.error('Error en la solicitud:', error);
+                document.getElementById('validaDUI').innerHTML = 'Error al verificar el número de DUI.';
+            });
+    }
+
+    function verificarTel(telefono){
+
+        const regex = /^[0-9]{8}$/;
+
+        if (!regex.test(telefono)) {
+            document.getElementById('validaTel').innerHTML = 'El formato del número de teléfono debe ser 00000000';
+            return; // Salir de la función si el formato no es válido
+            }
+
+        let url= "clases/clienteAjax.php"
+        let formData = new FormData();
+        formData.append("telefono", telefono)
+
+        fetch(url, {
+            method: 'POST',
+            body:formData
+        }).then(response=> response.json())
+        .then(data =>{
+            if (data.ok) {
+            document.getElementById('telefono').value = '';
+            document.getElementById('validaTel').innerHTML = 'El número de teléfono ya está registrado.';
+        } else {
+            document.getElementById('validaTel').innerHTML = '';
+        }
+    })
+    .catch(error => {
+        console.error('Error en la solicitud:', error);
+        document.getElementById('validaTel').innerHTML = 'Error al verificar el número de teléfono.';
+    });
+    }
 
     function existeEmail(email){
         let url = "clases/clienteAjax.php"
@@ -192,4 +312,5 @@ if(!empty($_POST)){
     }
 </script>
 </body>
+<?php include 'footer.php'; ?>
 </html> 

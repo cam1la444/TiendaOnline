@@ -1,6 +1,7 @@
 <?php
 define("SITE_URL", "http://localhost:8081/tiendaOnline/");
-define("CLIENTE_ID", "AXUJPlFDYKUgda8epgQAKYRHD0UT4EqLl0zXQidVEugPHlYdfVM7Da4jW7xefX-OH-irw5ulCp2fLlBT");
+define("CLIENTE_ID", "Aa4mmJEFZs7fq20i1o2OKmGTNGZIYUMDVUy-cwjNtHzsCqacqoOUsBN3jT2cdm0dIoj1QKPEL1ufvE74");
+//define("CLIENTE_SECRET", "EJ7xGaiuZHXwc8-JiJ8JMxKiUFGad0r_jUczUy0n73_lfzdayemPwg9DcAhXnaux1qOJOMTDe6LzZd5-");
 define("CURRENCY", "USD");
 define("KEY_TOKEN", "ABC.cnco-2015*");
 define("MONEDA", "$");

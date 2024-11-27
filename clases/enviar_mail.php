@@ -1,4 +1,3 @@
-
 <?php
 //ubze qzik jmlr rkdz
 //Import PHPMailer classes into the global namespace

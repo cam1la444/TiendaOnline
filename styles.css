@@ -230,8 +230,12 @@ footer {
 }
 
 .social-links li {
-    display: inline;
-    margin-right: 10px;
+    margin-bottom: 10px; /* Espaciado entre los elementos */
+}
+
+.social-links img {
+    display: inline-block; /* Asegura que la imagen esté en línea con el texto */
+    margin-right: 5px; /* Espacio entre la imagen y el texto */
 }
 
 footer p {
@@ -264,6 +268,8 @@ footer .footer-section a:hover {
     margin: 20px 0;
 }
 
+
+
 /* Media Queries para Responsividad */
 @media (max-width: 768px) {
     .images, .extra-info, .vision-main, .vision-grid {
@@ -295,7 +301,7 @@ footer .footer-section a:hover {
 
 /* Estilos para el menú */
 .menu-container {
-    position: relative;
+    /*position: relative;*/
 }
 
 /* Ícono del menú hamburguesa */
@@ -303,7 +309,11 @@ footer .footer-section a:hover {
     display: none;
     font-size: 24px;
     cursor: pointer;
-    color: #033E8C; /* Usa uno de tus colores preferidos */
+    color: lightslategrey; /* Usa uno de tus colores preferidos */
+    position: absolute; /* Coloca el ícono en posición absoluta */
+    top: 10px; /* Ajusta según tu preferencia */
+    left: 10px; /* Coloca el ícono en la esquina izquierda */
+    z-index: 1; /* Asegúrate de que esté por encima de otros elementos */
 }
 
 /* Menú de navegación */
@@ -317,7 +327,7 @@ nav ul {
 
 nav ul li a {
     text-decoration: none;
-    color: #333;
+    color: #F2F2F2;
     padding: 5px 10px;
 }
 
@@ -328,13 +338,13 @@ nav ul li a {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 40px;
-        right: 0;
-        background-color: #07598C;
+        top: 40px; /* Ajusta según tus preferencias */
+        left: 0; /* Coloca el menú en la esquina izquierda */
+        background-color: #3B444B;
         width: 200px;
         border-radius: 5px;
         padding: 10px;
-        text-align: right;
+        text-align: left; /* Cambia a izquierda para una mejor alineación */
     }
 
     /* Estilos del ícono de hamburguesa */
@@ -344,12 +354,79 @@ nav ul li a {
 
     /* Estilos para los enlaces del menú desplegable */
     nav ul li a {
-        display: block;
-        color: #F2F2F2; /* Color claro para resaltar */
-        padding: 10px 0;
+        padding: 10px;
+        text-align: left; /* Cambiado a izquierda para alineación */
     }
 
-    nav ul li a:hover {
-        color: #F2CC0F;
+    /* Mostrar el menú cuando está activo */
+    nav ul.active {
+        display: flex;
     }
 }
+
+/*Carrusel*/
+/* Contenedor del carrusel */
+.carousel {
+    position: relate;
+    max-width: 80%;
+    overflow: hidden;
+}
+
+/* Contenedor de imágenes del carrusel */
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+/* Cada imagen */
+.carousel-images img {
+    width: 70%;
+    display: block;
+}
+
+/* Botones de navegación */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.carousel-button.prev {
+    left: 50px;
+}
+
+.carousel-button.next {
+    right: 100px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .carousel-button {
+        padding: 8px;
+    }
+}
+
+.carousel {
+    width: 100%;
+    max-width: 400px; /* Ajusta el tamaño máximo del carrusel */
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 1s ease;
+    width: 100%;
+}
+
+.carousel-images img {
+    width: 100%;
+    flex-shrink: 0;
+}
+
